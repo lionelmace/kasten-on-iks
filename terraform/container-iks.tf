@@ -96,29 +96,3 @@ resource "ibm_container_vpc_cluster" "iks_cluster" {
     private_endpoint = true
   }
 }
-
-##############################################################################
-# Connect Log Analysis Service to cluster
-# 
-# Integrating Logging requires the master node to be 'Ready'
-# If not, you will face a timeout error after 45mins
-##############################################################################
-# resource "ibm_ob_logging" "iks_connect_log" {
-#   depends_on       = [module.log_analysis.key_guid]
-#   cluster          = ibm_container_vpc_cluster.iks_cluster.id
-#   instance_id      = module.log_analysis.guid
-#   private_endpoint = var.log_private_endpoint
-# }
-
-##############################################################################
-# Connect Monitoring Service to cluster
-# 
-# Integrating Monitoring requires the master node to be 'Ready'
-# If not, you will face a timeout error after 45mins
-##############################################################################
-# resource "ibm_ob_monitoring" "iks_connect_monitoring" {
-#   depends_on       = [module.cloud_monitoring.key_guid]
-#   cluster          = ibm_container_vpc_cluster.iks_cluster.id
-#   instance_id      = module.cloud_monitoring.guid
-#   private_endpoint = var.sysdig_private_endpoint
-# }
