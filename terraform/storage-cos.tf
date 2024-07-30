@@ -49,11 +49,11 @@ resource "ibm_cos_bucket" "scc-bucket" {
   cross_region_location = "eu"
   # region_location      = "eu-de"
 
-  metrics_monitoring {
-    usage_metrics_enabled   = true
-    request_metrics_enabled = true
-    metrics_monitoring_crn  = module.cloud_monitoring.crn
-  }
+  # metrics_monitoring {
+  #   usage_metrics_enabled   = true
+  #   request_metrics_enabled = true
+  #   metrics_monitoring_crn  = module.cloud_monitoring.crn
+  # }
   endpoint_type = "public"
 }
 
