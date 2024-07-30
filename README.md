@@ -53,7 +53,7 @@ These Terraform scripts will provision the following Cloud Services:
 5. Review the plan
 
     ```sh
-    terraform plan
+    terraform plan -var-file=testing.auto.tfvars
     ```
 
 6. Start provisioning.
@@ -61,7 +61,7 @@ These Terraform scripts will provision the following Cloud Services:
    > Estimated duration: 30 mins
 
     ```sh
-    terraform apply
+    terraform apply -var-file=testing.auto.tfvars
     ```
 ## Connect to an IKS Cluster
 
