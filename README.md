@@ -2,10 +2,67 @@
 
 ## Pre-Requisites
 
-    * IKS cluster version 1.30.x with 2 nodes of each 4x16 (https://cloud.ibm.com/kubernetes/catalog/create)
-    * IBM Cloud Object Storage (https://cloud.ibm.com/objectstorage/create)
-    * Helm package manager (https://helm.sh/)
+This blog requires the following command lines:
 
+* [IBM Cloud CLI](https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases)
+* [Terraform CLI](https://developer.hashicorp.com/terraform/downloads)
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [jq CLI JSON processor](https://jqlang.github.io/jq/download/)
+* Helm package manager (https://helm.sh/)
+
+## Provision an IKS cluster via Terraform
+
+These Terraform scripts will provision the following Cloud Services:
+
+* 1 Resource Group
+* 1 VPC
+* 3 Subnets spread out across 3 Zones
+* IKS cluster version 1.30.x with 2 nodes of each 4x16 (https://cloud.ibm.com/kubernetes/catalog/create)
+* 1 Log Analysis service
+* 1 Monitoring service
+* 1 Key Protect service to encrypt resources.
+
+1. Clone this repository
+
+    ```sh
+    git clone https://github.com/lionelmace/kasten-on-iks
+    ```
+
+2. Login to IBM Cloud
+
+    ```sh
+    ibmcloud login
+    ```
+
+3. Create and store the value of an API KEY as environment variable
+
+    ```sh
+    export IBMCLOUD_API_KEY=$(ibmcloud iam api-key-create my-api-key --output json | jq -r .apikey)
+    ```
+
+    > If the variable "ibmcloud_api_key" is set in your provider,
+    > you can initialize it using the following command
+    > export TF_VAR_ibmcloud_api_key="Your IBM Cloud API Key"
+
+4. Terraform must initialize the provider before it can be used.
+
+    ```sh
+    terraform init
+    ```
+
+5. Review the plan
+
+    ```sh
+    terraform plan
+    ```
+
+6. Start provisioning.
+
+   > Estimated duration: 30 mins
+
+    ```sh
+    terraform apply
+    ```
 ## Connect to an IKS Cluster
 
 1. Replace the cluster-name (including <>) with the the cluster name.
@@ -14,20 +71,20 @@
     export IKS_CLUSTER_NAME=<cluster-name>
     ```
 
-1. Log in to the IKS cluster using the following command:
+2. Log in to the IKS cluster using the following command:
 
     ```sh
     ibmcloud ks cluster config -c $IKS_CLUSTER_NAME --admin
     ```
 
-1. Set the values of both the ingress subdomain and the ingress secret of your cluster. Those values will be used in the deployment yaml later.
+3. Set the values of both the ingress subdomain and the ingress secret of your cluster. Those values will be used in the deployment yaml later.
 
     ```sh
     export IKS_INGRESS_URL=$(ibmcloud ks cluster get -c $IKS_CLUSTER_NAME | grep "Ingress Subdomain" | awk '{print tolower($3)}')
     export IKS_INGRESS_SECRET=$(ibmcloud ks cluster get -c $IKS_CLUSTER_NAME | grep "Ingress Secret" | awk '{print tolower($3)}')
     ```
 
-1. Verify the values you set
+4. Verify the values you set
 
     ```sh
     echo $IKS_INGRESS_URL
