@@ -118,6 +118,8 @@ These Terraform scripts will provision the following Cloud Services:
     kubectl get pods -n kasten-io
     ```
 
+    > Note: It takes 3 mins to get all the pods up and running.
+
 1. Check the status of PVC
 
     ```sh
