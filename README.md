@@ -1,5 +1,9 @@
 # Kasten Installation on IKS
 
+Kasten K10 is a Kubernetes-native backup and disaster recovery solution designed to protect, move, and manage containerized applications. On IBM Cloud, Kasten K10 provides robust capabilities to ensure the safety and recoverability of your Kubernetes workloads.
+
+The aim of this blog is to guide you through a full deployment of Kasten K10 on an IKS (IBM Cloud Kubernetes Service) cluster.
+
 ## Pre-Requisites
 
 This blog requires the following command lines:
@@ -10,7 +14,7 @@ This blog requires the following command lines:
 * [jq CLI JSON processor](https://jqlang.github.io/jq/download/)
 * [Helm package manager](https://helm.sh/)
 
-## Provision an IKS cluster via Terraform
+## Provision a cluster IKS via Terraform
 
 These Terraform scripts will provision the following Cloud Services:
 
@@ -62,7 +66,7 @@ These Terraform scripts will provision the following Cloud Services:
     terraform apply -var-file=testing.auto.tfvars
     ```
 
-## Connect to an IKS Cluster
+## Connect to a cluster IKS
 
 1. Replace the cluster-name (including <>) with the the cluster name.
 
