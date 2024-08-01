@@ -8,7 +8,7 @@ This blog requires the following command lines:
 * [Terraform CLI](https://developer.hashicorp.com/terraform/downloads)
 * [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [jq CLI JSON processor](https://jqlang.github.io/jq/download/)
-* Helm package manager (https://helm.sh/)
+* [Helm package manager](https://helm.sh/)
 
 ## Provision an IKS cluster via Terraform
 
