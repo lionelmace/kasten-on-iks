@@ -24,6 +24,8 @@ These Terraform scripts will provision the following Cloud Services:
 * IKS cluster version 1.30.x with 2 nodes of each 4x16 (https://cloud.ibm.com/kubernetes/catalog/create)
 * 1 Key Protect service to encrypt resources.
 
+Follow those steps:
+
 1. Clone this repository
 
     ```sh
@@ -45,6 +47,12 @@ These Terraform scripts will provision the following Cloud Services:
     > If the variable "ibmcloud_api_key" is set in your provider,
     > you can initialize it using the following command
     > export TF_VAR_ibmcloud_api_key="Your IBM Cloud API Key"
+
+1. Go to the Terraform directory
+
+    ```sh
+    cd terraform
+    ```
 
 1. Terraform must initialize the provider before it can be used.
 
