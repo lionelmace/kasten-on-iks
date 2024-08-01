@@ -1,4 +1,4 @@
-# Kasten Installation on IKS
+# Kasten K10 installation on IKS
 
 Kasten K10 is a Kubernetes-native backup and disaster recovery solution designed to protect, move, and manage containerized applications. On IBM Cloud, Kasten K10 provides robust capabilities to ensure the safety and recoverability of your Kubernetes workloads.
 
