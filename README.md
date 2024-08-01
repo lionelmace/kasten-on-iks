@@ -175,7 +175,7 @@ These Terraform scripts will provision the following Cloud Services:
 
     ![storage classes failed](./images/k10-storageclasses-validate.png)
   
-1. Create the Volume Snapshot Slass
+1. Create the Volume Snapshot class
 
     ```sh
     kubectl apply -f - << EOF
