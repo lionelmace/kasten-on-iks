@@ -163,7 +163,7 @@ These Terraform scripts will provision the following Cloud Services:
     open https://$IKS_INGRESS_URL/k10/
     ```
 
-1. Accept the terms
+1. Accept the Terms
 
    ![storage classes failed](./images/k10-accept-terms.png)
 
