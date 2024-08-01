@@ -26,13 +26,13 @@ These Terraform scripts will provision the following Cloud Services:
     git clone https://github.com/lionelmace/kasten-on-iks
     ```
 
-2. Login to IBM Cloud
+1. Login to IBM Cloud
 
     ```sh
     ibmcloud login
     ```
 
-3. Create and store the value of an API KEY as environment variable
+1. Create and store the value of an API KEY as environment variable
 
     ```sh
     export IBMCLOUD_API_KEY=$(ibmcloud iam api-key-create my-api-key --output json | jq -r .apikey)
@@ -42,25 +42,26 @@ These Terraform scripts will provision the following Cloud Services:
     > you can initialize it using the following command
     > export TF_VAR_ibmcloud_api_key="Your IBM Cloud API Key"
 
-4. Terraform must initialize the provider before it can be used.
+1. Terraform must initialize the provider before it can be used.
 
     ```sh
     terraform init
     ```
 
-5. Review the plan
+1. Review the plan
 
     ```sh
     terraform plan -var-file=testing.auto.tfvars
     ```
 
-6. Start provisioning.
+1. Start provisioning.
 
    > Estimated duration: 30 mins
 
     ```sh
     terraform apply -var-file=testing.auto.tfvars
     ```
+
 ## Connect to an IKS Cluster
 
 1. Replace the cluster-name (including <>) with the the cluster name.
@@ -69,20 +70,20 @@ These Terraform scripts will provision the following Cloud Services:
     export IKS_CLUSTER_NAME=<cluster-name>
     ```
 
-2. Log in to the IKS cluster using the following command:
+1. Log in to the IKS cluster using the following command:
 
     ```sh
     ibmcloud ks cluster config -c $IKS_CLUSTER_NAME --admin
     ```
 
-3. Set the values of both the ingress subdomain and the ingress secret of your cluster. Those values will be used in the deployment yaml later.
+1. Set the values of both the ingress subdomain and the ingress secret of your cluster. Those values will be used in the deployment yaml later.
 
     ```sh
     export IKS_INGRESS_URL=$(ibmcloud ks cluster get -c $IKS_CLUSTER_NAME | grep "Ingress Subdomain" | awk '{print tolower($3)}')
     export IKS_INGRESS_SECRET=$(ibmcloud ks cluster get -c $IKS_CLUSTER_NAME | grep "Ingress Secret" | awk '{print tolower($3)}')
     ```
 
-4. Verify the values you set
+1. Verify the values you set
 
     ```sh
     echo $IKS_INGRESS_URL
@@ -159,7 +160,7 @@ These Terraform scripts will provision the following Cloud Services:
     ```
 
 1. Accept the terms
-   
+
    ![storage classes failed](./images/k10-accept-terms.png)
 
 ## Configure Storage Class for Snapshot Volume
@@ -236,3 +237,7 @@ These Terraform scripts will provision the following Cloud Services:
           skipSSLVerify: true
     EOF
     ```
+
+## Resources
+
+* Kasten K10 [Overview](https://docs.kasten.io/latest/index.html)
