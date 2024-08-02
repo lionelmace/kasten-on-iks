@@ -57,21 +57,21 @@ resource "ibm_resource_key" "cos-hmac-kasten" {
   parameters           = { HMAC = true }
 }
 
-# locals {
-#   endpoints = [
-#     {
-#       name        = "kasten",
-#       db-name     = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.database"])
-#       db-endpoint = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.hosts.0.port"])
-#       db-username = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.authentication.username"])
-#       db-password = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.authentication.password"])
-#     }
-#   ]
-# }
+locals {
+  endpoints = [
+    {
+      name        = "kasten",
+      # db-name     = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["connection.postgres.authentication.password"])
+      # db-endpoint = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["connection.postgres.authentication.username"])
+      db-username = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.access_key_id"])
+      db-password = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.secret_access_key"])
+    }
+  ]
+}
 
-# output "kasten-credentials" {
-#   value = local.endpoints
-# }
+output "kasten-credentials" {
+  value = local.endpoints
+}
 
 ## IAM
 ##############################################################################
