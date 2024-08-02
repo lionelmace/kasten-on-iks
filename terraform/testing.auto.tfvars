@@ -15,7 +15,7 @@ vpc_enable_public_gateway     = true
 ##############################################################################
 ## Cluster IKS
 ##############################################################################
-iks_version               = "1.30.3"
+iks_version               = "1.29.7"
 iks_worker_nodes_per_zone = 1
 iks_machine_flavor        = "bx2.4x16"
 
@@ -29,14 +29,3 @@ iks_update_all_workers = true
 ##############################################################################
 cos_plan   = "standard"
 cos_region = "global"
-
-
-##############################################################################
-## Observability: Log Analysis (Mezmo) & Monitoring (Sysdig)
-##############################################################################
-# Available Plans: lite, 7-day, 14-day, 30-day
-# log_plan                 = "7-day"
-# log_enable_platform_logs = false
-
-# sysdig_plan                    = "graduated-tier"
-# sysdig_enable_platform_metrics = false
