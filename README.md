@@ -29,7 +29,7 @@ These Terraform scripts will provision the following Cloud Services:
 * 1 Resource Group
 * 1 VPC
 * 3 Subnets spread out across 3 Zones
-* IKS cluster version 1.30.x with 2 nodes of each 4x16 (https://cloud.ibm.com/kubernetes/catalog/create)
+* IKS cluster version 1.29 with 2 nodes of each 4x16 (https://cloud.ibm.com/kubernetes/catalog/create)
 * 1 Key Protect service to encrypt resources.
 
 Follow those steps:
