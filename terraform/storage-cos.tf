@@ -32,6 +32,22 @@ resource "ibm_resource_instance" "cos" {
   }
 }
 
+## COS Bucket for Kasten
+##############################################################################
+resource "ibm_cos_bucket" "kasten-bucket" {
+  bucket_name           = format("%s-%s", local.basename, "kasten-bucket")
+  resource_instance_id  = ibm_resource_instance.cos.id
+  storage_class         = "smart"
+
+  # Key management services can only be added during bucket creation.
+  # depends_on           = [ibm_iam_authorization_policy.iam-auth-kms-cos]
+  # kms_key_crn          = ibm_kms_key.key.id
+
+  cross_region_location = "eu"
+  endpoint_type = "public"
+  # endpoint_type = "private"
+}
+
 ## IAM
 ##############################################################################
 

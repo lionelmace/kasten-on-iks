@@ -194,11 +194,11 @@ Follow those steps:
 
 1. In K10 console, go to the **Settings > System Information**. Scroll down to Storage Classes.
 
-1. Click on Validate the default storage class **ibmc-vpc-block-10iops-tier**. The validation will fail because the VolumeSnapshotClass is missing.
+1. Click on Validate the default storage class **ibmc-vpc-block-10iops-tier**. The validation will fail because the VolumeSnapshotClass is missing the Kasten annotation.
 
     ![storage classes failed](./images/k10-storageclasses-validate.png)
   
-1. Create the Volume Snapshot class
+1. Annotate the Volume Snapshot class
 
     ```sh
     kubectl apply -f - << EOF
@@ -221,11 +221,11 @@ Follow those steps:
 
 ## Create Location profile for IBM Cloud COS Standard bucket
 
-1. Create Minio access key
+1. Create IBM Cloud access key
 
     ```sh
-    minio_access_key_id=$(echo $username)
-    minio_access_key_secret=$(echo $password)
+    ibm_cos_access_key_id=$(echo $username)
+    ibm_cos_access_key_secret=$(echo $password)
     ```
 
 1. Create COS secret for K10
