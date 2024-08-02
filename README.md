@@ -110,13 +110,21 @@ Follow those steps:
     helm repo add kasten https://charts.kasten.io/
     ```
 
+1. Run a repo update to get the latest Kasten version.
+
+    ```sh
+    helm repo update
+    ```
+
+    > Note: you can see the version by running the command: `helm repo list --versions`
+
 1. Create the namespace where Kasten will be installed. By default, the installation creates the namespace kasten-io.
 
     ```sh
     kubectl create namespace kasten-io
     ```
 
-1. Install Kasten K10 in IKS using the following Helm command:
+2. Install Kasten K10 in IKS using the following Helm command:
 
     ```sh
     helm install k10 kasten/k10 --namespace=kasten-io
@@ -125,7 +133,7 @@ Follow those steps:
     > Use this command to install on OpenShift
     > helm install k10 kasten/k10 --namespace=kasten-io --set scc.create=true
 
-1. Check that installation is complete and all pods are up and running in the kasten-io namespace:
+3. Check that installation is complete and all pods are up and running in the kasten-io namespace:
 
     ```sh
     kubectl get pods -n kasten-io
@@ -133,13 +141,13 @@ Follow those steps:
 
     > Note: It takes 3 mins to get all the pods up and running.
 
-1. Check the status of PVC
+4. Check the status of PVC
 
     ```sh
     kubectl get pvc -n kasten-io
     ```
 
-1. Create a route for accessing the Kasten dashboard:
+5. Create a route for accessing the Kasten dashboard:
 
     ```sh
     kubectl apply -f - <<EOF   
@@ -165,13 +173,13 @@ Follow those steps:
     EOF
     ```
 
-1. Open the K10 dashboard in a browser
+6. Open the K10 dashboard in a browser
 
     ```sh
     open https://$IKS_INGRESS_URL/k10/
     ```
 
-1. Accept the Terms
+7. Accept the Terms
 
    ![storage classes failed](./images/k10-accept-terms.png)
 
@@ -253,3 +261,5 @@ Follow those steps:
 ## Resources
 
 * Kasten K10 [Overview](https://docs.kasten.io/latest/index.html)
+* Kasten [Release Notes](https://docs.kasten.io/latest/releasenotes.html)
+* Kasten [Supported Kubernetes Version](https://docs.kasten.io/latest/operating/support.html)
