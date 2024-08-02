@@ -1,6 +1,6 @@
 # Kasten K10 installation on IKS
 
-> Estimated duration: 90 mins
+> Estimated duration: 90 mins including the infrastructure provisioning
 
 Kasten K10 is a Kubernetes-native backup and disaster recovery solution designed to protect, move, and manage containerized applications. On IBM Cloud, Kasten K10 provides robust capabilities to ensure the safety and recoverability of your Kubernetes workloads.
 
@@ -192,7 +192,7 @@ Follow those steps:
 
 ## Configure Storage Class for Snapshot Volume
 
-1. In K10 console, go to the Settings > System Information. Scroll down to Storage Classes.
+1. In K10 console, go to the **Settings > System Information**. Scroll down to Storage Classes.
 
 1. Click on Validate the default storage class **ibmc-vpc-block-10iops-tier**. The validation will fail because the VolumeSnapshotClass is missing.
 
