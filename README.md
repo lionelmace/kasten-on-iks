@@ -223,7 +223,7 @@ Follow those steps:
 
 ### Create COS Bucket secret for K10
 
-1. Create IBM Cloud access key
+1. Set IBM COS access key
 
     ```sh
     ibm_cos_access_key_id= <copy the it value from the terraform>
@@ -232,7 +232,7 @@ Follow those steps:
     ibm_cos_bucket_name= <copy the bucket name value from the terraform>
     ```
 
-2. Create COS secret for K10
+1. Create COS secret for K10
 
     ```sh
     kubectl create secret generic k10-cos-secret \
@@ -241,6 +241,8 @@ Follow those steps:
       --from-literal=aws_access_key_id=$ibm_cos_access_key_id\
       --from-literal=aws_secret_access_key=$ibm_cos_access_key_secret
     ```
+
+1. Create Location profile for IBM COS Smart bucket
 
     ```sh
     echo | kubectl apply -f - << EOF
@@ -269,39 +271,9 @@ Follow those steps:
     EOF
     ```
 
-## Temporary
+1. You should now see the Location Profile in K10 Dashboard
 
-# Create COS Bucket secret for K10
-kubectl create secret generic k10-cos-secret \
-      --namespace kasten-io \
-      --type secrets.kanister.io/aws \
-      --from-literal=aws_access_key_id= #IBM COS Access Key
-      --from-literal=aws_secret_access_key= #IBM COS Secret Key
- 
-# Create Location profile for IBM COS Smart bucket
-echo | kubectl apply -f - << EOF
-apiVersion: config.kio.kasten.io/v1alpha1
-kind: Profile
-metadata:
-  name: ibm-cos-bucket
-  namespace: kasten-io
-spec:
-  type: Location
-  locationSpec:
-    credential:
-      secretType: AwsAccessKey
-      secret:
-        apiVersion: v1
-        kind: Secret
-        name: k10-cos-secret
-        namespace: kasten-io
-    type: ObjectStore
-    objectStore:
-      endpoint: #IBM COS enpoint
-      name: #IBM COS bucket name
-      objectStoreType: S3
-      skipSSLVerify: true
-EOF
+    ![K10 profile](./images/k10-profile.png)
 
 ## Resources
 
