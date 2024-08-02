@@ -35,16 +35,16 @@ resource "ibm_resource_instance" "cos" {
 ## COS Bucket for Kasten
 ##############################################################################
 resource "ibm_cos_bucket" "kasten-bucket" {
-  bucket_name           = format("%s-%s", local.basename, "kasten-bucket")
-  resource_instance_id  = ibm_resource_instance.cos.id
-  storage_class         = "smart"
+  bucket_name          = format("%s-%s", local.basename, "kasten-bucket")
+  resource_instance_id = ibm_resource_instance.cos.id
+  storage_class        = "smart"
 
   # Key management services can only be added during bucket creation.
   # depends_on           = [ibm_iam_authorization_policy.iam-auth-kms-cos]
   # kms_key_crn          = ibm_kms_key.key.id
 
   cross_region_location = "eu"
-  endpoint_type = "public"
+  endpoint_type         = "public"
   # endpoint_type = "private"
 }
 
@@ -60,11 +60,11 @@ resource "ibm_resource_key" "cos-hmac-kasten" {
 locals {
   endpoints = [
     {
-      name        = "kasten",
-      cos_access_key_id = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.access_key_id"])
+      name                  = "kasten",
+      cos_access_key_id     = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.access_key_id"])
       cos_secret_access_key = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.secret_access_key"])
-      cos_endpoint = ibm_cos_bucket.kasten-bucket.s3_endpoint_direct
-      cos_bucket_name = ibm_cos_bucket.kasten-bucket.bucket_name
+      cos_endpoint          = ibm_cos_bucket.kasten-bucket.s3_endpoint_direct
+      cos_bucket_name       = ibm_cos_bucket.kasten-bucket.bucket_name
     }
   ]
 }
