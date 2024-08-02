@@ -1,5 +1,7 @@
 # Kasten K10 installation on IKS
 
+> Estimated duration: 90 mins
+
 Kasten K10 is a Kubernetes-native backup and disaster recovery solution designed to protect, move, and manage containerized applications. On IBM Cloud, Kasten K10 provides robust capabilities to ensure the safety and recoverability of your Kubernetes workloads.
 
 IKS (IBM Cloud Kubernetes Service) is a managed Kubernetes service to create your own cluster of compute hosts where you can deploy and manage containerized apps on IBM Cloud.
@@ -124,22 +126,21 @@ Follow those steps:
 
     > Note: you can see the version by running the command: `helm repo list --versions`
 
-1. Create the namespace where Kasten will be installed. By default, the installation creates the namespace kasten-io.
+1. Create the namespace where Kasten will be installed. By default, the installation creates the namespace **kasten-io**.
 
     ```sh
     kubectl create namespace kasten-io
     ```
 
-2. Install Kasten K10 in IKS using the following Helm command:
+1. Install Kasten K10 in IKS using the following Helm command:
 
     ```sh
     helm install k10 kasten/k10 --namespace=kasten-io
     ```
 
-    > Use this command to install on OpenShift
-    > helm install k10 kasten/k10 --namespace=kasten-io --set scc.create=true
+    > Use this command to install on OpenShift `helm install k10 kasten/k10 --namespace=kasten-io --set scc.create=true`
 
-3. Check that installation is complete and all pods are up and running in the kasten-io namespace:
+1. Check that installation is complete and all pods are up and running in the kasten-io namespace:
 
     ```sh
     kubectl get pods -n kasten-io
@@ -147,13 +148,13 @@ Follow those steps:
 
     > Note: It takes 3 mins to get all the pods up and running.
 
-4. Check the status of PVC
+1. Check the status of PVC
 
     ```sh
     kubectl get pvc -n kasten-io
     ```
 
-5. Create a route for accessing the Kasten dashboard:
+1. Create a route for accessing the Kasten dashboard:
 
     ```sh
     kubectl apply -f - <<EOF   
@@ -179,13 +180,13 @@ Follow those steps:
     EOF
     ```
 
-6. Open the K10 dashboard in a browser
+1. Open the K10 dashboard in a browser
 
     ```sh
     open https://$IKS_INGRESS_URL/k10/
     ```
 
-7. Accept the Terms
+1. Accept the Terms
 
    ![storage classes failed](./images/k10-accept-terms.png)
 
