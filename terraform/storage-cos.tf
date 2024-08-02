@@ -61,13 +61,17 @@ locals {
   endpoints = [
     {
       name        = "kasten",
-      # db-name     = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["connection.postgres.authentication.password"])
-      # db-endpoint = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["connection.postgres.authentication.username"])
-      db-username = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.access_key_id"])
-      db-password = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.secret_access_key"])
+      cos_endpoint = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["connection.postgres.authentication.username"])
+      cos_access_key_id = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.access_key_id"])
+      cos_secret_access_key = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.secret_access_key"])
+      cos_endpoint = data.ibm_resource_instance.cos.id.s3_endpoint_direct
     }
   ]
 }
+
+# locals {
+#   account_id = data.ibm_iam_account_settings.account_settings.account_id
+# }
 
 output "kasten-credentials" {
   value = local.endpoints
