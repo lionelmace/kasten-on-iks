@@ -18,6 +18,8 @@ This blog requires the following command lines:
 * [jq CLI JSON processor](https://jqlang.github.io/jq/download/)
 * [Helm package manager](https://helm.sh/)
 
+> This blog has been tested with the version IKS 1.29 and Kasten 10 7.05.
+
 ## Provision a cluster IKS via Terraform
 
 These Terraform scripts will provision the following Cloud Services:
