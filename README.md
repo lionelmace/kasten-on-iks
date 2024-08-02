@@ -2,6 +2,8 @@
 
 Kasten K10 is a Kubernetes-native backup and disaster recovery solution designed to protect, move, and manage containerized applications. On IBM Cloud, Kasten K10 provides robust capabilities to ensure the safety and recoverability of your Kubernetes workloads.
 
+IKS (IBM Cloud Kubernetes Service) is a managed Kubernetes service to create your own cluster of compute hosts where you can deploy and manage containerized apps on IBM Cloud.
+
 ![K10 architecture](./images/k10-architecture.png)
 
 The aim of this blog is to guide you through a full deployment of Kasten K10 on a cluster IKS (IBM Cloud Kubernetes Service).
