@@ -64,7 +64,7 @@ locals {
       cos_endpoint = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["connection.postgres.authentication.username"])
       cos_access_key_id = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.access_key_id"])
       cos_secret_access_key = nonsensitive(ibm_resource_key.cos-hmac-kasten.credentials["cos_hmac_keys.secret_access_key"])
-      cos_endpoint = ibm_resource_instance.cos.s3_endpoint_direct
+      cos_endpoint = ibm_cos_bucket.kasten-bucket.cos.s3_endpoint_direct
     }
   ]
 }
