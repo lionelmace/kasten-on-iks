@@ -50,7 +50,7 @@ resource "ibm_cos_bucket" "kasten-bucket" {
 
 ## Service Credentials
 ##############################################################################
-resource "ibm_resource_key" "cos-kasten-credentials" {
+resource "ibm_resource_key" "cos-hmac-kasten" {
   name                 = format("%s-%s", local.basename, "cos-kasten-key")
   resource_instance_id = ibm_resource_instance.cos.id
   role                 = "Writer"
@@ -60,18 +60,16 @@ resource "ibm_resource_key" "cos-kasten-credentials" {
 # locals {
 #   endpoints = [
 #     {
-#       name        = "postgres",
-#       # crn         = ibm_database.icd_postgres.id
+#       name        = "kasten",
 #       db-name     = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.database"])
-#       db-host     = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.hosts.0.hostname"])
-#       db-port     = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.hosts.0.port"])
-#       db-user     = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.authentication.username"])
+#       db-endpoint = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.hosts.0.port"])
+#       db-username = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.authentication.username"])
 #       db-password = nonsensitive(ibm_resource_key.db-svc-credentials.credentials["connection.postgres.authentication.password"])
 #     }
 #   ]
 # }
 
-# output "icd-postgres-credentials" {
+# output "kasten-credentials" {
 #   value = local.endpoints
 # }
 
