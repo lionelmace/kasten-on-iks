@@ -6,7 +6,7 @@ IKS (IBM Cloud Kubernetes Service) is a managed Kubernetes service to create you
 
 ![K10 architecture](./images/k10-architecture.png)
 
-The aim of this blog is to guide you through a full deployment of Kasten K10 on a cluster IKS (IBM Cloud Kubernetes Service).
+The aim of this blog is to guide you through a full deployment of Kasten K10 on a cluster IKS.
 
 ## Pre-Requisites
 
