@@ -53,7 +53,8 @@ resource "ibm_cos_bucket" "kasten-bucket" {
 resource "ibm_resource_key" "cos-kasten-credentials" {
   name                 = format("%s-%s", local.basename, "cos-kasten-key")
   resource_instance_id = ibm_resource_instance.cos.id
-  role                 = "Viewer"
+  role                 = "Writer"
+  parameters           = { HMAC = true }
 }
 
 # locals {
