@@ -79,7 +79,8 @@ resource "ibm_container_vpc_cluster" "iks_cluster" {
   wait_till                       = var.iks_wait_till
   disable_public_service_endpoint = var.iks_disable_public_service_endpoint
   # By default, public outbound access is blocked in IKS 1.30
-  disable_outbound_traffic_protection = true
+  # Commented because only supported as of IKS 1.30
+  # disable_outbound_traffic_protection = true
 
 
   dynamic "zones" {
