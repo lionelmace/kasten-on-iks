@@ -246,7 +246,7 @@ Exporting or importing data requires an object storage location. We will use the
     kubectl create secret generic k10-cos-secret \
       --namespace kasten-io \
       --type secrets.kanister.io/aws \
-      --from-literal=aws_access_key_id=$ibm_cos_access_key_id\
+      --from-literal=aws_access_key_id=$ibm_cos_access_key_id \
       --from-literal=aws_secret_access_key=$ibm_cos_access_key_secret
     ```
 
