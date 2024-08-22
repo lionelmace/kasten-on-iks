@@ -235,9 +235,9 @@ Exporting or importing data requires an object storage location. We will use the
 
     ```sh
     ibm_cos_access_key_id= <copy the ID value from the terraform>
-    ibm_cos_access_key_secret= <copy the secret value from the terraform>
-    ibm_cos_endpoint= <copy the endpoint value from the terraform>
     ibm_cos_bucket_name= <copy the bucket name value from the terraform>
+    ibm_cos_endpoint= <copy the endpoint value from the terraform>
+    ibm_cos_access_key_secret= <copy the secret value from the terraform>
     ```
 
 1. Create a Kubernetes secret to store the COS credentials for K10
