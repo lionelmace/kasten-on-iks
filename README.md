@@ -285,6 +285,8 @@ Exporting or importing data requires an object storage location. We will use the
 
     ![K10 profile](./images/k10-profile.png)
 
+Congratulations! You have been completed the installation of Kasten K10 on IKS.
+
 ## Resources
 
 * Kasten K10 [Overview](https://docs.kasten.io/latest/index.html)
