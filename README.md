@@ -231,7 +231,7 @@ Exporting or importing data requires an object storage location. We will use the
 
     ![COS credentials](./images/terraform-credentials.png)
 
-1. Let's set those IBM COS values into variables to reuse later.
+1. Let's set those IBM COS values into variables to reuse them later.
 
     ```sh
     ibm_cos_access_key_id= <copy the ID value from the terraform>
